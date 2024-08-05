@@ -9,3 +9,5 @@ usethis::create_from_github(
 )
 
 Don't forget to pull and then push after committing!
+
+Now I am adding something from Snork Maiden!
