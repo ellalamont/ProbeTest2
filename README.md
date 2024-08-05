@@ -2,4 +2,8 @@
 
 R analysis of TC-Seq probe test 2
 
-test
+To set up the R project, ran this in console:
+usethis::create_from_github(
+  "https://github.com/ellalamont/ProbeTest2.git",
+  destdir = "/Users/elamont/Documents/RProjects/"
+)
