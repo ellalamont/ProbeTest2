@@ -48,7 +48,23 @@ options(scipen = 999)
 ###########################################################
 ############### IMPORT PIPELINE SUMMARY DATA ##############
 
-my_df <- read.csv("Pipeline.Summary.Details.csv")
+my_pipeSummary <- read.csv("Pipeline.Summary.Details.csv")
 
 
+###########################################################
+############ IMPORT AND PROCESS ALL TPM VALUES ############
+
+my_tpm <- read.csv("Mtb.Expression.Gene.Data.TPM.csv")
+
+my_tpm <- my_tpm[,-ncol(my_tpm)] # remove the last column which is the Undetermined
+
+# Adjust the names so they are slightly shorter
+# names(my_tpm) <- gsub(x = names(my_tpm), pattern = "_2_2_ng_mL", replacement = "")
+names(my_tpm) <- gsub(x = names(my_tpm), pattern = "_S.*", replacement = "") # This regular expression removes the _S and everything after it (I think...)
+
+# add rownames to the tpm and metadata dataframes
+rownames(my_tpm) <- my_tpm[,1] # add the rownames
+my_tpm <- my_tpm[,-1] # Remove the old column of rownames
+rownames(my_metadata) <- my_metadata[,1] # add the rownames
+# my_metadata <- my_metadata[,-1] # Remove the old column of rownames
 
